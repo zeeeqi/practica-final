@@ -1,0 +1,74 @@
+<form class="p-5" [formGroup]="formularioContacto" (ngSubmit)="submit()">
+  <legend class="w-auto mb-3 h2">Formulario de propuestas</legend>
+  <div class="form-group row mb-3">
+    <label class="col-lg-1 col-form-label col-form-label-sm" for="nombre"
+      >Nombre (*)</label
+    >
+    <div class="col-lg-5 col-md-7">
+      <input
+        class="form-control"
+        id="nombre"
+        type="text"
+        formControlName="nombre"
+      />
+    </div>
+    <div
+      *ngIf="formularioContacto.get('nombre')?.errors?.['maxlength'] || formularioContacto.get('nombre')?.errors?.['minlength']"
+      class="form-text text-danger"
+    >
+      * El nombre debe tener entre 8 y 30 carateres.
+    </div>
+    <div
+      *ngIf="formularioContacto.get('nombre')?.errors?.['empiezaMayuscula']"
+      class="form-text text-danger"
+    >
+      * Debe empezar por mayúscula...
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-lg-1 col-form-label col-form-label-sm" for="mail"
+      >Email (*)</label
+    >
+    <div class="col-lg-5 col-md-7">
+      <input
+        class="form-control"
+        id="mail"
+        type="text"
+        formControlName="mail"
+      />
+    </div>
+    <div
+      *ngIf="formularioContacto.get('mail')?.errors?.['email']"
+      class="form-text text-danger"
+      a
+    >
+      * Formato de email incorrecto.
+    </div>
+  </div>
+
+  <div class="form-group row mb-3">
+    <label class="col-lg-1 col-form-label col-form-label-sm" for="mensaje"
+      >Mensaje (*)</label
+    >
+    <div class="col-lg-5 col-md-7">
+      <textarea
+        class="form-control"
+        id="mensaje"
+        type="text"
+        rows="7"
+        formControlName="mensaje"
+      ></textarea>
+    </div>
+    <div
+      *ngIf="formularioContacto.get('mensaje')?.errors?.['required']"
+      class="form-text text-danger"
+    >
+      * El mensaje es obligatorio
+    </div>
+  </div>
+  <div class="col-auto justify-self-end">
+    <button type="submit" class="btn btn-primary mb-2">Confirmar</button>
+  </div>
+  <div class="mt-4">{{ message }}</div>
+</form>

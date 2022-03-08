@@ -1,0 +1,38 @@
+<div class="p-3 container">
+  <div class="row">
+    <div class="col">
+      <p>Nombres en mayúsculas</p>
+      <ul>
+        <li *ngFor="let nombre of nombres">
+          {{ nombre | uppercase }}
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <p>Nombres Con la primera letra mayúscula</p>
+      <ul>
+        <li *ngFor="let nombre of nombres">
+          {{ nombre | titlecase }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p>Nombres acortados, con la primera letra en mayúsculas</p>
+      <ul>
+        <li *ngFor="let nombre of nombres">
+          {{ nombre | slice: 0:3 | titlecase }}...
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <p>Nombres al revés con pipe personalizada</p>
+      <ul>
+        <li *ngFor="let nombre of nombres">
+          {{ nombre | customPipe | titlecase }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
